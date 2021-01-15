@@ -1,0 +1,21 @@
+<h1>Surgery Info <h1>
+
+<h3> Surgery Title: <%= @surgery.title  %> </h3>
+<h3> Surgery Room Number: <%=  @surgery.room_number %> </h3>
+
+<h2> Other surgeries happening this day of the week: </h2>
+
+<h3><% @surgeries.date_listed(@surgery.day_of_week).each do |surg| %></h3>
+<li>Surgery Title: <%= surg.title  %></li>
+<% end %><br>
+
+
+  <%= form_tag "/surgeries/#{@surgery.id}/doctors", method: :post do %> 
+  <%= label_tag "Add A Doctor To This Surgery" %>
+  <%= text_field_tag "Add A Doctor To This Surgery"%> 
+  <%= submit_tag 'Submit' %>
+  <% end %>
+
+  <% @surgery.doctors.each do |doctor| %>
+  <h3>Doctors on this Surgery: <%= doctor.name %></h3>
+  <% end %>
