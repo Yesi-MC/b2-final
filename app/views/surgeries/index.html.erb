@@ -1,0 +1,10 @@
+<h1> List of Surgeries </h1>
+
+<% @surgeries.each do |surgery| %>
+  <section class="surgery-<%= surgery.id %>" >
+  <h3>Surgery Title: <%= link_to surgery.title, "/surgeries/#{surgery.id}" %></h3>
+    <% surgery.doctors.each do |doctor| %>
+    <li>DR.Performing Surgery: <%= doctor.name %></li>
+    <% end %>
+  <% end %>
+</section>
